@@ -56,9 +56,9 @@ function fruit(color, name) {
 }
 
 /*
-constructor functions objects are created with the "new" keyword
-constructor function objects helps in identifying which object is being made in normal object
-creation if cannot identify what object has been created its name is not displayed.
+Objects created using constructor functions:
+- Created using the "new" keyword
+- Help identify the type of object using instanceof
 */
 const appleObj = new fruit("red", "apple");
 const bananaObj = new fruit("yellow", "banana");
