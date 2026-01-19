@@ -87,7 +87,7 @@ const bookStore = {
     "Think and Grow Rich": 3,
   },
 
-  // check availability
+  
   isAvailable(bookName) {
     if (this.books[bookName] > 0) {
       return `${bookName} is available (${this.books[bookName]} copies)`;
@@ -98,7 +98,7 @@ const bookStore = {
     }
   },
 
-  // restock books
+
   restock(bookName, quantity) {
     if (this.books[bookName] !== undefined) {
       this.books[bookName] += quantity;
