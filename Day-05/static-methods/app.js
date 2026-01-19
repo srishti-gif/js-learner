@@ -84,7 +84,7 @@ console.log(emp.name);
 console.log(Object.isFrozen(emp));
 
 /*
-Seal: used to make the object mutable same as freeze method but we can change the 
+Seal: used to make the object immutable same as freeze method but we can change the 
 i.e, modify the existing property in the object.
 */
 let dept = {
