@@ -55,26 +55,4 @@ form.addEventListener("submit", function (e) {
   console.log(user);
 });
 
-/*
-2. Add, delete, and search rows in a dynamic table
-A form to add rows (Name, Age, Role).
-Each row should have a “Delete” button to remove it.
-Add a search input that filters the rows by name.
-Use insertRow, deleteRow, and textContent/innerText.
-*/
 
-const table = document.getElementById("table_id");
-console.log(table);
-
-const createTable = document.createElement("table");
-console.log(createTable);
-
-const tableNameInput = document.createElement("input");
-tableNameInput.placeholder = "Name";
-
-const tableAgeInput = document.createElement("input");
-tableAgeInput.type = "number";
-tableAgeInput.placeholder = "Age";
-
-const tableRoleInput = document.createElement("input");
-tableRoleInput.placeholder = "Role";
