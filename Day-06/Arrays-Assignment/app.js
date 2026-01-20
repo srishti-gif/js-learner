@@ -180,194 +180,210 @@ const departments = [
 ];
 
 //Can you filter employees who work in the "Engineering" department?
+const getDept = employees.filter((e) => e.departmentId == 2);
+console.log(getDept);
 
-const getDeptName = (id) => departments.find((d) => d.id === id)?.name;
-const getEngDep = employees.filter(
-  (e) => getDeptName(e.departmentId) === "Engineering",
-);
-console.log(getEngDep);
-
-// Highest salary
+// // Highest salary
 const highestSalary = Math.max(...employees.map((e) => e.salary));
-console.log("Highest Salary:", highestSalary);
+console.log("Higest Salary", highestSalary);
 
-// Check if any employee is in Sales
-const hasSalesEmployee = employees.some(
-  (e) => getDeptName(e.departmentId) === "Sales",
-);
+// // Check if any employee is in Sales
+// const hasSalesEmployee = employees.some(
+//   (e) => getDeptName(e.departmentId) === "Sales",
+// );
+
+const hasSalesEmployee = employees.some((e) => e.departmentId == 4);
 console.log("Has Sales Employee:", hasSalesEmployee);
 
-// Employees earning more than 6000
-const employeesAbove6000 = employees.filter((e) => e.salary > 6000);
-console.log("Employees earning > 6000:", employeesAbove6000);
+// // Employees earning more than 6000
+const earningMoreThan6k = employees.filter((e) => {
+  return e.salary > 6000;
+});
+console.log("Employees earning more tha 6k", earningMoreThan6k);
 
-// Array of employee names
+// // Array of employee names
 const employeeNames = employees.map((e) => e.name);
-console.log("Employee Names:", employeeNames);
+console.log(employeeNames);
 
-// Total salary of all employees
-const totalSalary = employees.reduce((sum, e) => sum + e.salary, 0);
-console.log("Total Salary:", totalSalary);
+// // Total salary of all employees
+const totSalary = employees.reduce((sum, e) => {
+  return sum + e.salary;
+}, 0);
+console.log(totSalary);
 
-// Check if any employee earns less than 5000
-const hasLowSalaryEmployee = employees.some((e) => e.salary < 5000);
-console.log("Any salary < 5000:", hasLowSalaryEmployee);
+// // Check if any employee earns less than 5000
+const hasSalaryLessThan5k = employees.some((e) => {
+  return e.salary < 5000;
+});
 
-// First employee earning exactly 5100
-const employeeWith5100Salary = employees.find((e) => e.salary === 5100);
-console.log("Employee with 5100 salary:", employeeWith5100Salary);
+console.log(hasSalaryLessThan5k);
 
-// Last employee in HR department
-const lastHrEmployee = employees
-  .filter((e) => getDeptName(e.departmentId) === "HR")
+//  First employee earning exactly 5100
+const firstEmpSalLessthan5k = employees.find((e) => {
+  return e.salary === 5100;
+});
+
+console.log(firstEmpSalLessthan5k);
+
+// // Last employee in HR department
+const LastEmpInHrDept = employees
+  .filter((e) => {
+    return e.departments === "HR";
+  })
   .at(-1);
-console.log("Last HR Employee:", lastHrEmployee);
 
-// First employee in Marketing department
-const firstMarketingEmployee = employees.find(
-  (e) => getDeptName(e.departmentId) === "Marketing",
-);
-console.log("First Marketing Employee:", firstMarketingEmployee);
+console.log(lastEightElements);
 
-// Check if all employees earn more than 4000
-const allEarnAbove4000 = employees.every((e) => e.salary > 4000);
-console.log("All earn > 4000:", allEarnAbove4000);
+//  First employee in Marketing department
+const firstEmpInMarketing = employees
+  .filter((e) => {
+    return e.departmentId === 3;
+  })
+  .at(0);
+console.log(firstEmpInMarketing);
 
-// First employee in Sales or HR
-const firstSalesOrHrEmployee = employees.find((e) =>
-  ["Sales", "HR"].includes(getDeptName(e.departmentId)),
-);
+// // Check if all employees earn more than 4000
+const allEmpSalGreaterThan4k = employees.every((e) => {
+  return e.salary > 4000;
+});
+console.log(allEmpSalGreaterThan4k);
+
+// // First employee in Sales or HR
+const firstSalesOrHrEmployee = employees.find((e) => {
+  return e.departmentId === 1 || e.departmentId === 4;
+});
+
 console.log("First Sales or HR Employee:", firstSalesOrHrEmployee);
 
-// Verify all employees belong to valid departments
+// // Verify all employees belong to valid departments
 const allEmployeesHaveValidDept = employees.every((e) =>
   departments.some((d) => d.id === e.departmentId),
 );
 console.log("All employees have valid department:", allEmployeesHaveValidDept);
 
-// Log each employee name and department
+// // Log each employee name and department
 employees.forEach((e) =>
-  console.log("Employee:", e.name, "-", getDeptName(e.departmentId)),
+  console.log("Employee:", e.name, "->", departments[e.departmentId]),
 );
 
-// Increment salary by 10%
-const updatedSalaries = employees.map((e) => ({
-  ...e,
-  salary: e.salary * 1.1,
-}));
-console.log("Updated Salaries:", updatedSalaries);
+// // Increment salary by 10%
+const salaryIncrease = employees.map((e) => e.salary * 1.1);
+console.log(salaryIncrease);
 
-// Flatten employee skills
+// // Flatten employee skills
 const employeeSkills = [
   { name: "Alice", skills: ["Excel", "Management"] },
   { name: "Bob", skills: ["JS", "React"] },
 ];
-const allSkills = employeeSkills.flatMap((e) => e.skills);
-console.log("All Skills:", allSkills);
+const flatArray = employeeSkills.flatMap((e) => e.skills);
+console.log(flatArray);
 
-// Total salary of Engineering department
-const engineeringTotalSalary = employees
+// // Total salary of Engineering department
+const totSalInEngDept = employees
   .filter((e) => e.departmentId === 2)
-  .reduce((sum, e) => sum + e.salary, 0);
-console.log("Engineering Total Salary:", engineeringTotalSalary);
+  .reduce((sum, e) => {
+    return (sum += e.salary);
+  }, 0);
+console.log(totSalInEngDept);
 
-// Check if any department has all employees earning more than 5000
-const departmentWithHighEarners = departments.some((d) =>
-  employees
-    .filter((e) => e.departmentId === d.id)
-    .every((e) => e.salary > 5000),
-);
-console.log("Any department where all earn > 5000:", departmentWithHighEarners);
+// // Check if any department has all employees earning more than 5000
+const result = departments.some((dept) => {
+  const deptEmployees = employees.filter((e) => e.departmentId === dept.id);
 
-// Total unique projects
+  return deptEmployees.every((e) => e.salary > 5000);
+});
+
+console.log(result);
+
+// // Total unique projects
 const employeeProjects = [{ projects: ["A", "B"] }, { projects: ["B", "C"] }];
 const uniqueProjectCount = new Set(employeeProjects.flatMap((e) => e.projects))
   .size;
 console.log("Unique Project Count:", uniqueProjectCount);
 
-// Employee name with department
+// // Employee name with department
 const employeeWithDepartment = employees.map((e) => ({
   name: e.name,
   department: getDeptName(e.departmentId),
 }));
 console.log("Employee with Department:", employeeWithDepartment);
 
-// Names of employees earning more than 6000
+// // Names of employees earning more than 6000
 const highEarningEmployeeNames = employees
   .filter((e) => e.salary > 6000)
   .map((e) => e.name);
 console.log("High Earning Employees:", highEarningEmployeeNames);
 
-// Print employee names using for-of
+// // Print employee names using for-of
 for (const e of employees) {
   console.log("Employee Name:", e.name);
 }
 
-// Print names earning more than 5000
+// // Print names earning more than 5000
 for (const e of employees) {
   if (e.salary > 5000) console.log("Salary > 5000:", e.name);
 }
 
-// for-of with destructuring
+// // for-of with destructuring
 for (const { name, salary } of employees) {
   console.log("Name & Salary:", name, salary);
 }
 
-// Match employees with departments
-for (const e of employees) {
-  console.log("Employee Dept Match:", e.name, getDeptName(e.departmentId));
-}
+// // Match employees with departments
+// for (const e of employees) {
+//   console.log("Employee Dept Match:", e.name, getDeptName(e.departmentId));
+// }
 
-// entries() with for-of
+// // entries() with for-of
 for (const [index, e] of employees.entries()) {
   console.log("Index & Name:", index, e.name);
 }
 
-// Array-like object access
+// // Array-like object access
 const arrayLike = { 0: "First", 1: "Second", length: 2 };
 console.log("Second Element:", arrayLike[1]);
 
-// Convert arguments to real array
+// // Convert arguments to real array
 function convertArgumentsToArray() {
   return Array.from(arguments);
 }
 console.log("Arguments Array:", convertArgumentsToArray(1, 2, 3));
 
-// Merge two arrays
+// // Merge two arrays
 const arr1 = [1, 2];
 const arr2 = [3, 4];
 
 const mergedArray = [...arr1, ...arr2];
 console.log("Merged Array:", mergedArray);
 
-// Create array of 5 "A"
+// // Create array of 5 "A"
 const fiveAsArray = Array.from({ length: 5 }, () => "A");
 console.log("Five A Array:", fiveAsArray);
 
-// Convert string to array
+// // Convert string to array
 const stringToArray = Array.from("Hello");
 console.log("String to Array:", stringToArray);
 
-// Group words by first letter
+// // Group words by first letter
 const wordsGroupedByFirstLetter = Object.groupBy(
   ["apple", "banana", "apricot", "mango", "blueberry"],
   (word) => word[0],
 );
 console.log("Grouped Words:", wordsGroupedByFirstLetter);
 
-// Count occurrences of numbers
+// // Count occurrences of numbers
 const numberFrequency = [3, 7, 3, 2, 3, 8, 7, 7].reduce((acc, n) => {
   acc[n] = (acc[n] || 0) + 1;
   return acc;
 }, {});
 console.log("Number Frequency:", numberFrequency);
 
-// Median of array
+// // Median of array
 const sortedNumbers = [5, 2, 9, 1, 3, 6, 8].toSorted((a, b) => a - b);
 const medianValue = sortedNumbers[Math.floor(sortedNumbers.length / 2)];
 console.log("Median:", medianValue);
 
-// Convert array to object
+// // Convert array to object
 const objectFromArray = Object.fromEntries([
   ["a", 1],
   ["b", 2],
@@ -375,14 +391,14 @@ const objectFromArray = Object.fromEntries([
 ]);
 console.log("Object from Array:", objectFromArray);
 
-// Flatten and uppercase
+// // Flatten and uppercase
 const uppercasedLetters = [
   ["a", "b"],
   ["c", "d"],
 ].flatMap((a) => a.map((x) => x.toUpperCase()));
 console.log("Uppercased Letters:", uppercasedLetters);
 
-// Count fruits
+// // Count fruits
 const fruitCount = [
   "apple",
   "banana",
@@ -396,7 +412,7 @@ const fruitCount = [
 }, {});
 console.log("Fruit Count:", fruitCount);
 
-// Extract ['b','c','d']
+// // Extract ['b','c','d']
 const slicedArray = ["a", "b", "c", "d", "e"].slice(1, 4);
 console.log("Sliced Array:", slicedArray);
 
