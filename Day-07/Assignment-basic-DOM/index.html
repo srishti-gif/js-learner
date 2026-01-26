@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment-DOM-basics</title>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div id="title">Hello</div>
+
+    <button onclick="changeColor()" class="box">box1</button>
+    <button onclick="changeColor()" class="box">box2</button>
+    <button onclick="changeColor()" class="box">box3</button>
+    <button onclick="changeColor()" class="box">box4</button>
+    <button onclick="changeColor()" class="box">box5</button>
+    <button onclick="changeColor()" class="box">box6</button>
+
+    <button onclick="printButton()" id="click-me">click-me</button>
+
+    <input id="myInput" type="text" search="input-feild" onkeyup="getText()" />
+
+    <div id="text" onclick="countFreq()">
+      This is a test. This test is only a test.
+    </div>
+
+    <ul onclick="printColors()" id="cars">
+      <li>BMW</li>
+      <li>Mahindra</li>
+      <li>Audi</li>
+      <li>Toyota</li>
+      <li>Honda</li>
+      <li>Hundai</li>
+      <li>Tata</li>
+      <li>Suzuki</li>
+    </ul>
+
+    <div id="text1" onclick="ReplaceOccurence()">
+      This is a test. This test is only a test.
+    </div>
+
+    <a href="https://google.com">Google</a>
+    <a href="https://google.com">Google Again</a>
+  </body>
+</html>
