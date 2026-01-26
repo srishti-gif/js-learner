@@ -115,9 +115,8 @@ const user1 = {
 user1.greet();
 
 /*
-5. Create a Sports constructor function that takes name and number of players as arguments and assigns them using this keyword. Then, create two sports instances and log their details
+Create a Sports constructor function that takes name and number of players as arguments and assigns them using this keyword. Then, create two sports instances and log their details
 */
-
 function Sports(name, numberOfPlayer) {
   this.name = name;
   this.numberOfPlayer = numberOfPlayer;
@@ -151,16 +150,3 @@ car1.describe.apply(car2);
 //bind
 let car = car1.describe.bind(car2);
 car();
-
-const person = {
-  name: "Charlie",
-  sayHello: function () {
-    console.log(this.name);
-  },
-  sayHelloArrow: () => {
-    console.log(this.name);
-  },
-};
-
-person.sayHello();
-person.sayHelloArrow();
