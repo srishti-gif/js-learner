@@ -1,0 +1,11 @@
+.content {
+  display: none;
+}
+
+.content.active {
+  display: block;
+}
+
+.tab.active {
+  background-color: lightblue;
+}
